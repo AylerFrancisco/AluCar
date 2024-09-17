@@ -1,11 +1,12 @@
 <?php
 require_once "conexao.inc.php";
 
+require_once 'conexao.inc.php';
 class ClienteDao
 {
-    private  $con;
 
-    public function __construct()
+    private $con;
+    function __construct()
     {
         $c = new Conexao();
         $this->con = $c->getConexao();
@@ -29,3 +30,5 @@ class ClienteDao
         return $cliente;
     }
 }
+
+   
