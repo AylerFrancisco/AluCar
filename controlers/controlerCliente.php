@@ -4,26 +4,14 @@ $opcao = $_REQUEST['pOpcao'];
 
 
 if ($opcao == 1) {
-    $email = $_REQUEST['pEmail'];
+    $login = $_REQUEST['pEmail'];
     $senha = $_REQUEST['pSenha'];
     $clienteDao = new ClienteDao();
-    $cliente = $clienteDao->autenticar($email, $senha);
-
+    $cliente = $clienteDao->autenticar($login, $senha);
     if ($cliente != NULL) {
         session_start();
         $_SESSION['cliente'] = $cliente;
-            header("Location:../views/exibirCarros.php");
-
-        if ($emCompra == 1) {
-            header("Location: controllerCarrinho.php?opcao=5");
-        } else {
-
-            if (isset($_SESSION["carrinho"]) && sizeof($_SESSION["carrinho"]) > 0) {
-                header("Location: ../views/exibirCarrinho.php");
-            } else {
-                header("Location: controlerCarro.php?opcao=6");
-            }
-        }
+        header("Location:../views/exibirCarros.php");
     } else {
         header("Location:../views/formLogin.php?erro=1");
     }
@@ -33,7 +21,7 @@ if ($opcao == 2) {
 
     session_start();
 
-    unset($_SESSION['clienteLogado']);
+    unset($_SESSION['cliente']);
 
     header("Location:../views/index.php");
 }
