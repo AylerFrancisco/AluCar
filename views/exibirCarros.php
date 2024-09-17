@@ -1,44 +1,52 @@
-<?php        
-      require_once 'includes/cabecalho.inc.php';   
+<?php
+require_once 'includes/cabecalho.inc.php'; // Inclui o cabeçalho da página
+require_once '../classes/carro.inc.php'; // Inclui a classe Carro
+
 ?>
+
 <p>
-<h1 class="text-center">Produtos do estoque</h1>
-<p> 
+<h1 class="text-center">Carros Disponíveis para Aluguel</h1>
+<p>
 <div class="table-responsive">
-<table class="table table-light table-hover">
-      <thead class="table-primary">
-            <tr class="align-middle" style="text-align: center">
-                <th witdh="10%">ID</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Data de Fabricação</th>
-                <th>Preço unitário</th>
-                <th>Em Estoque</th>
-                <th>Fabricante</th>
-                <th>Operação</th>
-            </tr>
-      </thead>
-      <tbody class="table-group-divider">
-      <?php
-         // percurso aqui
-               echo "<tr align='center'>";
-               echo "<td>"."ID 0"."</td>";
-               echo "<td><strong>"."NOME"."</strong></td>";
-               echo "<td>"."RESUMO"."</td>";
-               echo "<td>"."DATA FORMATADA"."</td>";
-               echo "<td>"."R$ PREÇO"."</td>";
-               echo "<td>"."ESTOQUE"."</td>";
-               echo "<td>"."FABRICANTE"."</td>";
-               echo "<td><a href='#' class='btn btn-success btn-sm'>A</a> ";
-               echo "<a href='#' class='btn btn-danger btn-sm'>X</a></td>";
-               echo "</tr>";
-         
-      ?>
-      </tbody>  
-</table>
+      <table class="table table-light table-hover">
+            <thead class="table-primary">
+                  <tr class="align-middle" style="text-align: center">
+                        <th width="10%">ID</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th>Ano</th>
+                        <th>Preço por Dia</th>
+                        <th>Disponibilidade</th>
+                        <th>Operações</th>
+                  </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                  <?php
+                  // Instanciação dos carros
+                  $carros = [
+                        new Carro(1, 'Civic', 'Honda', 2020, 150.00, true),
+                        new Carro(2, 'Corolla', 'Toyota', 2019, 140.00, false),
+                        new Carro(3, 'Onix', 'Chevrolet', 2021, 120.00, true)
+                  ];
+
+                  // Exibição dos carros na tabela
+                  foreach ($carros as $carro) {
+                        echo "<tr align='center'>";
+                        echo "<td>" . $carro->__get('id') . "</td>";
+                        echo "<td><strong>" . $carro->__get('modelo') . "</strong></td>";
+                        echo "<td>" . $carro->__get('marca') . "</td>";
+                        echo "<td>" . $carro->__get('ano') . "</td>";
+                        echo "<td>R$ " . number_format($carro->__get('precoPorDia'), 2, ',', '.') . "</td>";
+                        echo "<td>" . ($carro->__get('disponibilidade') ? 'Disponível' : 'Indisponível') . "</td>";
+                        echo "<td><a href='#' class='btn btn-success btn-sm'>Reservar</a> ";
+                        echo "<a href='#' class='btn btn-danger btn-sm'>Excluir</a></td>";
+                        echo "</tr>";
+                  }
+                  ?>
+            </tbody>
+      </table>
 </div>
 
 <?php
-       require_once 'includes/rodape.inc.php';
+require_once '../includes/rodape.inc.php'; // Inclui o rodapé da página
 ?>
-
