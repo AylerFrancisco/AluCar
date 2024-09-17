@@ -24,7 +24,7 @@ if ($opc == 1) {
             if (isset($_SESSION["carrinho"]) && sizeof($_SESSION["carrinho"]) > 0) {
                 header("Location: ../views/exibirCarrinho.php");
             } else {
-                header("Location: controllerProduto.php?opcao=6");
+                header("Location: controlerCarro.php?opcao=6");
             }
         }
     } else {
