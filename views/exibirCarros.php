@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/cabecalho.inc.php'; // Inclui o cabeçalho da página
-require_once '../classes/carro.inc.php'; // Inclui a classe Carro
+require_once '../classes/veiculos.inc.php'; // Inclui a classe Carro
 
 ?>
 
@@ -24,9 +24,7 @@ require_once '../classes/carro.inc.php'; // Inclui a classe Carro
                   <?php
                   // Instanciação dos carros
                   $carros = [
-                        new Carro(1, 'Civic', 'Honda', 2020, 150.00, true),
-                        new Carro(2, 'Corolla', 'Toyota', 2019, 140.00, false),
-                        new Carro(3, 'Onix', 'Chevrolet', 2021, 120.00, true)
+                        
                   ];
 
                   // Exibição dos carros na tabela

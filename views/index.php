@@ -1,7 +1,7 @@
 <?php require_once "includes/cabecalho.inc.php" ?>
 
 <!-- CONTEUDO -->
-<h1 class="text-center">Bem-vindos a nossa Loja Virtual!</h1>
+<h1 class="text-center">Bem-vindos a nossa Locadora Virtual!</h1>
 
 <section class="my-5">
   <div class="container">

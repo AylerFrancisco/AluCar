@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/09/2024 às 01:57
+-- Tempo de geração: 17/09/2024 às 04:01
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Estrutura para tabela `categoria`
 --
-
 
 CREATE TABLE `categoria` (
   `id_categoria` int(2) NOT NULL,
@@ -94,7 +93,7 @@ CREATE TABLE `socios` (
 CREATE TABLE `usuarios` (
   `user` text DEFAULT NULL,
   `senha` text DEFAULT NULL,
-  `tipo_usuario` char(1) NOT NULL DEFAULT 'C',
+  `tipo` char(1) NOT NULL DEFAULT 'C',
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -102,7 +101,7 @@ CREATE TABLE `usuarios` (
 -- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`user`, `senha`, `tipo_usuario`, `email`) VALUES
+INSERT INTO `usuarios` (`user`, `senha`, `tipo`, `email`) VALUES
 ('Admin User', '123', 'A', 'admin@example'),
 ('Cliente User', '123', 'C', 'cliente@example');
 
