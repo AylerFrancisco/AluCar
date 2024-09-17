@@ -16,9 +16,13 @@
         Você deseja realmente sair do sistema?
       </div>
       <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-primary">Sim</button> -->
+
         <a class='btn btn-primary me-2' role='button' href='../controlers/controlerCliente.php?pOpcao=2'>Sair</a>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+
+        <button type="button" class="btn btn-secondary"
+
+          data-bs-dismiss="modal">Não</button>
+
       </div>
     </div>
   </div>
