@@ -27,8 +27,8 @@ class Carro {
 
 
     public function __set($attr, $value) {
-        if (property_exists($this, $property)) {
-            $this->$property = $value;
+        if (property_exists($this, $attr)) {
+            $this->$attr = $value;
         }
     }
 
