@@ -10,7 +10,7 @@
 
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle link-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Veículos 
+        Veículos
       </a>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="../controlers/controllerFabricante.php?opcao=2">Cadastrar</a></li>
