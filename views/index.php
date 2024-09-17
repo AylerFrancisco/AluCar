@@ -8,9 +8,12 @@
     <div class="row">
       <div class="col-md-8 mx-auto fs-5" align="justify">
         <img src="imagens/header.jpg" alt="" class="img-fluid"><br><br>
-        <p>Que tal fazer as suas compras sem precisar sair de casa? Então confira a nossa loja virtual. Os mesmos produtos e qualidade que você encontra nas nossas lojas físicas! <strong>Loja Des Web</strong>, agora também online para você!</p>
-        <p>A <strong>Loja Des Web</strong> oferece uma experiência única para você! Aqui você escolhe se quer comprar na nossa loja física ou virtual, se quer receber o produto por delivery ou retirar nas lojas e se quer pagar com dinheiro, cartão de débito ou crédito, ou via PIX! Só na <strong>Loja Des Web</strong> você compra do seu jeito!</p>
-        <p>Confira nossos produtos e faça suas compras aproveitando nossos Cupons de Desconto, melhores ofertas e promoções imperdíveis!</p>
+        <p>Que tal alugar um carro sem precisar sair de casa? Confira a nossa plataforma online de aluguel de veículos. A mesma qualidade e variedade de carros que você encontra em nossas lojas físicas, agora disponíveis na <strong>Alucar</strong>!</p>
+
+        <p>A <strong>AluCar</strong> oferece uma experiência única para você! Escolha o veículo ideal para sua viagem ou necessidade, faça a reserva online e opte por retirar o carro em uma de nossas lojas físicas ou recebê-lo diretamente no local que preferir. Você pode pagar com cartão de débito, crédito ou via PIX! Só na <strong>Alucar</strong> você aluga do seu jeito!</p>
+
+        <p>Confira nossa frota, aproveite as promoções e alugue seu carro com os melhores descontos e ofertas exclusivas!</p>
+
       </div>
     </div>
   </div>

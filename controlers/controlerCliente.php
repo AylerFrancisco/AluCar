@@ -5,7 +5,7 @@ $clienteDao = new ClienteDao();
 $opc = (int)$_REQUEST["pOpcao"];
 
 if ($opc == 1) {
-    
+
     $email = $_REQUEST["pEmail"];
     $senha = $_REQUEST["pSenha"];
 
@@ -14,8 +14,8 @@ if ($opc == 1) {
 
     if ($cliente != null) {
         session_start();
-        $_SESSION["cliente"] = $cliente;
-        $emCompra = (int)$_REQUEST["em_compra"];
+        $_SESSION['cliente'] = $cliente;
+            header("Location:../views/exibirCarros.php");
 
         if ($emCompra == 1) {
             header("Location: controllerCarrinho.php?opcao=5");
