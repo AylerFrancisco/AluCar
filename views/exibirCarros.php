@@ -48,5 +48,5 @@ require_once '../classes/carro.inc.php'; // Inclui a classe Carro
 </div>
 
 <?php
-require_once '../includes/rodape.inc.php'; // Inclui o rodapé da página
+require_once 'includes/rodape.inc.php'; // Inclui o rodapé da página
 ?>
