@@ -14,8 +14,8 @@
 
     $tipo = 'C';
     session_start();
-    if (isset($_SESSION['clienteLogado'])) {
-      $tipo = $_SESSION['clienteLogado']->tipo;
+    if (isset($_SESSION["cliente"])) {
+      $tipo = $_SESSION["cliente"]->tipo;
     }
     require_once "menu" . $tipo . ".inc.php";
 

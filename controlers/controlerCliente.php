@@ -10,7 +10,7 @@ if ($opcao == 1) {
     $cliente = $clienteDao->autenticar($login, $senha);
     if ($cliente != NULL) {
         session_start();
-        $_SESSION['cliente'] = $cliente;
+        $_SESSION["cliente"] = $cliente;
         header("Location:../views/exibirCarros.php");
     } else {
         header("Location:../views/formLogin.php?erro=1");
@@ -21,7 +21,7 @@ if ($opcao == 2) {
 
     session_start();
 
-    unset($_SESSION['cliente']);
+    unset($_SESSION["cliente"]);
 
     header("Location:../views/index.php");
 }

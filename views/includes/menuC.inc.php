@@ -15,7 +15,7 @@
         Sócios
       </a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Cadastrar</a></li>
+        <li><a class="dropdown-item" href="../views/formSocio.php">Cadastrar</a></li>
         <li><a class="dropdown-item" href="#">Seus dados</a></li>
       </ul>
     </li>
@@ -34,7 +34,7 @@
 
   <div class="col-md-3 text-end">
     <?php
-    if (!isset($_SESSION['cliente'])) {
+    if (!isset($_SESSION["cliente"])) {
     ?>
       <a class="btn btn-outline-primary me-2" role="button"
         href="formLogin.php">Login</a>
