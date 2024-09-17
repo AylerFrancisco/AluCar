@@ -30,8 +30,10 @@
                     </div>
 
                     <?php
-                    if (isset($_REQUEST["erro"]) && $_REQUEST['erro'] == 1) {
-                        echo "<font color='red'>Erro de Login aqui!</font>";
+                    if (isset($_REQUEST['erro'])) 
+                    {
+                        if ((int)($_REQUEST['erro']) == 1) 
+                        echo "<b><font face='Verdana' size='2' color='red'>Login Incorreto!</font><b>";
                     }
                     ?>
 
