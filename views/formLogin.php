@@ -1,10 +1,5 @@
 <?php require_once "includes/cabecalho.inc.php";
 
-$em_compra = 0;
-
-if (isset($_REQUEST['em_compra'])) {
-    $em_compra = (int)$_REQUEST['em_compra'];
-}
 
 ?>
 
@@ -39,13 +34,13 @@ if (isset($_REQUEST['em_compra'])) {
                     </div>
 
                     <?php
-                    if (isset($_REQUEST["erro"]) && $_REQUEST['erro'] == 1) {
-                        echo "<font color='red'>Erro de Login aqui!</font>";
+                    if (isset($_REQUEST['erro'])) {
+                        if ((int)($_REQUEST['erro']) == 1)
+                            echo "<b><font face='Verdana' size='2' color='red'>Login Incorreto!</font><b>";
                     }
                     ?>
 
-                    <a class="d-block text-center mt-2 small" href="formCliente.php">Não possui uma conta? Cadastre-se aqui</a>
-
+                    
                     <input type="hidden" value="1" name="pOpcao">
                 </form>
             </div>

@@ -1,18 +1,15 @@
 <?php
-require_once "../dao/clienteDAO.inc.php";
-$clienteDao = new ClienteDao();
+require_once '../dao/clienteDao.inc.php';
+$opcao = $_REQUEST['pOpcao'];
 
-$opc = (int)$_REQUEST["pOpcao"];
 
-if ($opc == 1) {
+if ($opcao == 1) {
+    $email = $_REQUEST['pEmail'];
+    $senha = $_REQUEST['pSenha'];
+    $clienteDao = new ClienteDao();
+    $cliente = $clienteDao->autenticar($email, $senha);
 
-    $email = $_REQUEST["pEmail"];
-    $senha = $_REQUEST["pSenha"];
-
- 
-    $cliente = $clienteDao->Autenticar($email, $senha);
-
-    if ($cliente != null) {
+    if ($cliente != NULL) {
         session_start();
         $_SESSION['cliente'] = $cliente;
             header("Location:../views/exibirCarros.php");
@@ -28,12 +25,16 @@ if ($opc == 1) {
             }
         }
     } else {
-        header("Location: ../views/formLogin.php?erro=1");
-    }
-} else {
-    if ($opc == 2) {
-        session_start();
-        unset($_SESSION["cliente"]);
-        header("Location: ../views/index.php");
+        header("Location:../views/formLogin.php?erro=1");
     }
 }
+
+if ($opcao == 2) {
+
+    session_start();
+
+    unset($_SESSION['clienteLogado']);
+
+    header("Location:../views/index.php");
+}
+?>
