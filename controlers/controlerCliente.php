@@ -16,7 +16,7 @@ if ($opc == 1) {
     if ($cliente != null) {
         session_start();
         $_SESSION['cliente'] = $cliente;
-            header("Location:../views/exibirProdutos.php");
+            header("Location:../views/exibirCarros.php");
 
         
     } else {
