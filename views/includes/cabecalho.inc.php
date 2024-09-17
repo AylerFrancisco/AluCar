@@ -17,6 +17,6 @@
     if (isset($_SESSION['clienteLogado'])) {
       $tipo = $_SESSION['clienteLogado']->tipo;
     }
-    require_once "menu".$tipo.".inc.php";
+    require_once "menu" . $tipo . ".inc.php";
 
     ?>

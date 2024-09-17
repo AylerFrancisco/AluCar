@@ -34,13 +34,16 @@
 
   <div class="col-md-3 text-end">
     <?php
-    if (!isset($_SESSION["cliente"])) {
+    if (!isset($_SESSION['cliente'])) {
     ?>
-      <a class="btn btn-outline-primary me-2" role="button" href="formLogin.php">Login</a>
+      <a class="btn btn-outline-primary me-2" role="button"
+        href="formLogin.php">Login</a>
+
     <?php
     } else {
       include_once "modal.inc.php";
     }
+
     ?>
   </div>
 </header>
