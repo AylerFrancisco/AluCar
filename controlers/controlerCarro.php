@@ -6,7 +6,7 @@ if (isset($_GET['opcao'])) {
     // Verifica se a opção é 6 (Carros disponíveis)
     if ($opcao == 6) {
         // Redireciona para a página exibirCarros.php
-        header('Location: ../views/exibirCarros.php');
+        header('Location: ../views/exibirVeiculos.php');
         exit(); // Para garantir que o script pare após o redirecionamento
     } else {
         // Se a opção não for 6, redireciona para uma página de erro ou faz outra ação
