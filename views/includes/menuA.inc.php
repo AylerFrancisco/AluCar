@@ -13,7 +13,7 @@
         Veículos
       </a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="../controlers/controllerFabricante.php?opcao=2">Cadastrar</a></li>
+        <li><a class="dropdown-item" href="formVeiculo.php">Cadastrar Veículo</a></li> <!-- Nova opção de cadastro -->
         <li><a class="dropdown-item" href="#">Cadastrar Vários</a></li>
         <li><a class="dropdown-item" href="../controlers/controllerProduto.php?opcao=2">Consultar</a></li>
         <li>
@@ -21,6 +21,8 @@
         </li>
         <li><a class="dropdown-item" href="../controlers/controllerProduto.php?opcao=6">Show Room</a></li>
       </ul>
+    </li>
+
     </li>
 
     <li class="nav-item dropdown">

@@ -1,6 +1,6 @@
 <?php
 
-class Exemplares
+class Exemplar
 {
     private $id_exemplar;
     private $placa_veiculo;
