@@ -30,8 +30,8 @@
         Clientes
       </a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Cadastrar</a></li>
-        <li><a class="dropdown-item" href="#">Consultar</a></li>
+        <li><a class="dropdown-item" href="../views/formSocio.php">Cadastrar</a></li>
+        <li><a class="dropdown-item" href="../controlers/controlerSocio.php?opcao=2">Consultar</a></li>
       </ul>
     </li>
 
