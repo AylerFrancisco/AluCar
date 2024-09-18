@@ -45,6 +45,16 @@
             }
             return $lista;
         }
+
+
+
+        public function excluirProduto($cpf){
+
+            $sql=$this->con->prepare("delete from socios where cpf = :cpf");
+            $sql->bindValue(':cpf',$cpf);
+            $sql->execute();
+
+        }
     }
 
 

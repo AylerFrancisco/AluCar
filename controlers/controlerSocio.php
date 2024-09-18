@@ -26,6 +26,15 @@ if ($opcao == 2)
     header("Location:../views/exibirSocios.php");
 }
 
+if($opcao == 3){
+    $cpf = (int)$_REQUEST['cpf'];
+
+    $socioDao = new SocioDao();
+    $socioDao->excluirProduto($cpf);
+
+    header("Location:controlerSocio.php?opcao=2");
+}
+
 
 
 
