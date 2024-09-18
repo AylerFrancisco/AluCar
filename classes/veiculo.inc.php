@@ -1,6 +1,6 @@
 <?php
 
-class Veiculos
+class Veiculo
 {
     private $placa;
     private $nome;

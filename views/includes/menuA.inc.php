@@ -13,7 +13,7 @@
         Veículos
       </a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="cadastrar_veiculo.php">Cadastrar Veículo</a></li> <!-- Nova opção de cadastro -->
+        <li><a class="dropdown-item" href="formVeiculo.php">Cadastrar Veículo</a></li> <!-- Nova opção de cadastro -->
         <li><a class="dropdown-item" href="#">Cadastrar Vários</a></li>
         <li><a class="dropdown-item" href="../controlers/controllerProduto.php?opcao=2">Consultar</a></li>
         <li>

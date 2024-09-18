@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/cabecalho.inc.php'; // Inclui o cabeçalho da página
-require_once '../classes/veiculos.inc.php'; // Inclui a classe Carro
+require_once '../classes/veiculo.inc.php'; // Inclui a classe Carro
 
 ?>
 

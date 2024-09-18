@@ -1,6 +1,6 @@
 <?php
 
-class Socios
+class Socio
 {
     private $cpf;
     private $nome;
