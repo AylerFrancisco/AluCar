@@ -5,7 +5,7 @@ require_once "includes/cabecalho.inc.php";
 <h1 class="text-center">Inclusão de produto</h1>
 <p>
 
-<form class="row g-3" action="#" method="post">
+<form class="row g-3" action="../controlers/controlerSocio.php" method="post">
     <div class="col-md-3">
         <label for="pCpf" class="form-label">Cpf</label>
         <input type="text" class="form-control" name="pCpf">

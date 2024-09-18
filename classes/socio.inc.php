@@ -1,6 +1,6 @@
 <?php
 
-class Socios
+class Socio
 {
     private $cpf;
     private $nome;
@@ -9,7 +9,12 @@ class Socios
     private $telefone;
     private $email;
 
-    public function __construct($cpf, $nome, $rg, $endereco, $telefone, $email)
+    public function __construct()
+    {
+        
+    }
+
+    public function setSocio($cpf, $nome, $rg, $endereco, $telefone, $email)
     {
         $this->cpf = $cpf;
         $this->nome = $nome;
