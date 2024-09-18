@@ -18,6 +18,8 @@ require_once '../dao/veiculoDao.inc.php'; // Inclui a classe VeiculoDAO
                         <th>Ano</th>
                         <th>Preço Base</th>
                         <th>Categoria</th>
+                        <th>Resumo</th> <!-- Nova coluna -->
+                        <th>Descrição</th> <!-- Nova coluna -->
                         <th>Operações</th>
                   </tr>
             </thead>
@@ -36,6 +38,8 @@ require_once '../dao/veiculoDao.inc.php'; // Inclui a classe VeiculoDAO
                         echo "<td>" . $veiculo->__get('anoFabricacao') . "</td>";
                         echo "<td>R$ " . number_format($veiculo->__get('valorBase'), 2, ',', '.') . "</td>";
                         echo "<td>" . $veiculo->__get('id_categoria') . "</td>";
+                        echo "<td>" . $veiculo->__get('resumo') . "</td>";  // Exibe o resumo
+                        echo "<td>" . $veiculo->__get('descricao') . "</td>";  // Exibe a descrição
                         echo "<td><a href='#' class='btn btn-success btn-sm'>Reservar</a> ";
                         echo "<a href='#' class='btn btn-danger btn-sm'>Excluir</a></td>";
                         echo "</tr>";

@@ -11,7 +11,7 @@ if ($opcao == 1) {
     if ($cliente != NULL) {
         session_start();
         $_SESSION["cliente"] = $cliente;
-        header("Location:../views/exibirCarros.php");
+        header("Location:../views/exibirVeiculos.php");
     } else {
         header("Location:../views/formLogin.php?erro=1");
     }

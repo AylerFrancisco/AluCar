@@ -23,7 +23,9 @@ final class VeiculoDAO
                 opcionais, 
                 motorizacao, 
                 valorBase, 
-                id_categoria
+                id_categoria,
+                descricao,         
+                resumo             
             )
             VALUES (
                 :placa, 
@@ -33,7 +35,9 @@ final class VeiculoDAO
                 :opcionais, 
                 :motorizacao, 
                 :valorBase, 
-                :id_categoria
+                :id_categoria,
+                :descricao,        
+                :resumo            
             )
         ");
 
@@ -45,9 +49,12 @@ final class VeiculoDAO
         $sql->bindValue(":motorizacao", $veiculo->motorizacao);
         $sql->bindValue(":valorBase", $veiculo->valorBase);
         $sql->bindValue(":id_categoria", $veiculo->id_categoria);
+        $sql->bindValue(":descricao", $veiculo->descricao);   // Novo campo
+        $sql->bindValue(":resumo", $veiculo->resumo);         // Novo campo
 
         $sql->execute();
     }
+
 
     public function getVeiculos()
     {
@@ -58,7 +65,9 @@ final class VeiculoDAO
             v.fabricante, 
             v.anoFabricacao, 
             v.valorBase, 
-            c.descricao AS categoria 
+            c.descricao AS categoria,
+            v.descricao,
+            v.resumo   
         FROM veiculos v
         INNER JOIN categoria c
         ON v.id_categoria = c.id_categoria");
@@ -74,7 +83,9 @@ final class VeiculoDAO
                     null, // Opcionais (pode adicionar se necessário)
                     null, // Motorização (pode adicionar se necessário)
                     $row->valorBase,
-                    $row->categoria // Categoria agora aparece corretamente
+                    $row->categoria, // Categoria agora aparece corretamente
+                    $row->descricao,  // Novo campo
+                    $row->resumo
                 );
 
                 $veiculos[] = $veiculo;
@@ -96,7 +107,9 @@ final class VeiculoDAO
             v.opcionais, 
             v.motorizacao, 
             v.valorBase, 
-            c.descricao as categoria
+            c.descricao as categoria,
+            v.descricao,
+            v.resumo
         FROM veiculos v
         INNER JOIN categoria c
         ON v.id_categoria = c.id_categoria
@@ -114,7 +127,9 @@ final class VeiculoDAO
             $v->opcionais,
             $v->motorizacao,
             $v->valorBase,
-            $v->categoria
+            $v->categoria,
+            $v->descricao,    // Novo campo
+            $v->resumo
         );
     }
 
@@ -129,7 +144,9 @@ final class VeiculoDAO
                 opcionais = :opcionais, 
                 motorizacao = :motorizacao, 
                 valorBase = :valorBase, 
-                id_categoria = :id_categoria
+                id_categoria = :id_categoria,
+                descricao = :descricao,       
+                resumo = :resumo            
             WHERE
                 placa = :placa
         ");
@@ -142,9 +159,12 @@ final class VeiculoDAO
         $sql->bindValue(":motorizacao", $veiculo->motorizacao);
         $sql->bindValue(":valorBase", $veiculo->valorBase);
         $sql->bindValue(":id_categoria", $veiculo->id_categoria);
+        $sql->bindValue(":descricao", $veiculo->descricao);  // Novo campo
+        $sql->bindValue(":resumo", $veiculo->resumo);        // Novo campo
 
         $sql->execute();
     }
+
 
     public function deleteVeiculo(string $placa)
     {

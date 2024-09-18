@@ -5,26 +5,26 @@
 <h1 class="text-center">Inclusão de Veículo</h1>
 <p> 
   
-<form class="row g-3" action="#" method="post">
+<form class="row g-3" action="../controlers/controlerVeiculo.php" method="post">
   <div class="col-md-3">
     <label for="vPlaca" class="form-label">Placa</label>
-    <input type="text" class="form-control" name="vPlaca">
+    <input type="text" class="form-control" name="vPlaca" required>
   </div>
   <div class="col-md-6">
     <label for="vNome" class="form-label">Nome do Veículo</label>
-    <input type="text" class="form-control" name="vNome">
+    <input type="text" class="form-control" name="vNome" required>
   </div>
   <div class="col-md-3">
     <label for="vValorBase" class="form-label">Valor Base</label>
-    <input type="text" class="form-control" name="vValorBase">
+    <input type="text" class="form-control" name="vValorBase" required>
   </div>
   <div class="col-md-3">
     <label for="vAnoFabricacao" class="form-label">Ano de Fabricação</label>
-    <input type="date" class="form-control" name="vAnoFabricacao">
+    <input type="date" class="form-control" name="vAnoFabricacao" required>
   </div>
   <div class="col-md-3">
     <label for="vFabricante" class="form-label">Fabricante</label>
-    <select name="vFabricante" class="form-select">
+    <select name="vFabricante" class="form-select" required>
       <option selected value="0">Escolha...</option>
       <option value="1">Fabricante 1</option>
       <option value="2">Fabricante 2</option>
@@ -32,15 +32,15 @@
   </div>
   <div class="col-md-3">
     <label for="vMotorizacao" class="form-label">Motorização</label>
-    <input type="text" class="form-control" name="vMotorizacao">
+    <input type="text" class="form-control" name="vMotorizacao" required>
   </div>
   <div class="col-md-3">
     <label for="vOpcionais" class="form-label">Opcionais</label>
-    <input type="text" class="form-control" name="vOpcionais">
+    <input type="text" class="form-control" name="vOpcionais" required>
   </div>
   <div class="col-md-3">
     <label for="vCategoria" class="form-label">Categoria</label>
-    <select name="vCategoria" class="form-select">
+    <select name="vCategoria" class="form-select" required>
       <option selected value="0">Escolha...</option>
       <option value="1">Categoria 1</option>
       <option value="2">Categoria 2</option>
