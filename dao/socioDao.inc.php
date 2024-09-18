@@ -33,12 +33,12 @@
             $lista = array();
             while($row = $rs->fetch(PDO::FETCH_OBJ)){
                 $socio = new Socio();
-                $socio->__set($socio->cpf, $row->cpf);
-                $socio->__set($socio->nome, $row->nome);
-                $socio->__set($socio->rg, $row->rg);
-                $socio->__set($socio->endereco, $row->endereco);
-                $socio->__set($socio->telefone, $row->telefone);
-                $socio->__set($socio->email, $row->email);
+                $socio->__set('cpf', $row->cpf);
+                $socio->__set('nome', $row->nome);
+                $socio->__set('rg', $row->rg);
+                $socio->__set('endereco', $row->endereco);
+                $socio->__set('telefone', $row->telefone);
+                $socio->__set('email', $row->email);
 
                 $lista[] = $socio;
 
