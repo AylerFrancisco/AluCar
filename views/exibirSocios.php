@@ -32,7 +32,7 @@ $socios = $_SESSION['socios'];
                 echo "<td>" . $socio->endereco . "</td>";
                 echo "<td>" . $socio->telefone . "</td>";
                 echo "<td>" . $socio->email . "</td>";
-                echo "<td><a href='#' class='btn btn-success btn-sm'>Atualizar</a> ";
+                echo "<td><a href='../controlers/controlerSocio.php?opcao=4&cpf=" . $socio->cpf . "' class='btn btn-success btn-sm'>Atualizar</a> ";
                 echo "<a href= '../controlers/controlerSocio.php?opcao=3&cpf=".$socio->cpf."' class='btn btn-danger btn-sm'>Excluir</a></td>";
                 echo "</tr>";
             }

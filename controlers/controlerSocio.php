@@ -30,11 +30,38 @@ if($opcao == 3){
     $cpf = (int)$_REQUEST['cpf'];
 
     $socioDao = new SocioDao();
-    $socioDao->excluirProduto($cpf);
+    $socioDao->excluirSocio($cpf);
 
     header("Location:controlerSocio.php?opcao=2");
 }
 
+if($opcao == 4){
+    session_start();
+    $cpf = (int)$_REQUEST['cpf'];
+
+    $socioDao= new SocioDao();
+
+    $socio = $socioDao->getSocio($cpf);
+    
+
+    
+    $_SESSION['socio'] = $socio;
+
+    header("Location:../views/formSocioAtualizar.php");
+}
+if ($opcao == 5){
+    $socio= new Socio();
+    $socio->setSocio($_POST['pCpf'], $_POST['pNome'], $_POST['pRg'], $_POST['pEndereco'], $_POST['pTelefone'], $_POST['pEmail']);
+
+
+    $socioDao= new SocioDao();
+    $socioDao->atualizarSocio($socio);
+
+
+    header("Location:controlerSocio.php?opcao=2");
+
+
+}
 
 
 
