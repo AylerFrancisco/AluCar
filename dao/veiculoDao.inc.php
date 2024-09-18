@@ -2,16 +2,18 @@
 require_once "conexao.inc.php";
 require_once "../utils/funcoesUteis.php";
 
-final class VeiculoDAO 
+final class VeiculoDAO
 {
     private PDO $conn;
 
-    public function __construct() {
+    public function __construct()
+    {
         $c = new Conexao();
         $this->conn = $c->getConexao();
     }
 
-    public function incluirVeiculo(Veiculo $veiculo) {
+    public function incluirVeiculo(Veiculo $veiculo)
+    {
         $sql = $this->conn->prepare("
             INSERT INTO veiculos (
                 placa, 
@@ -47,33 +49,32 @@ final class VeiculoDAO
         $sql->execute();
     }
 
-    public function getVeiculos(){
+    public function getVeiculos()
+    {
         $sql = $this->conn->query("
         SELECT 
             v.placa, 
             v.nome, 
-            v.anoFabricacao, 
             v.fabricante, 
-            v.opcionais, 
-            v.motorizacao, 
+            v.anoFabricacao, 
             v.valorBase, 
-            c.descricao as categoria
+            c.descricao AS categoria 
         FROM veiculos v
-        INNER JOIN categorias c
+        INNER JOIN categoria c
         ON v.id_categoria = c.id_categoria");
 
         $veiculos = [];
         if ($sql->rowCount() > 0) {
-            while ($v = $sql->fetch(PDO::FETCH_OBJ)) {
+            while ($row = $sql->fetch(PDO::FETCH_OBJ)) {
                 $veiculo = new Veiculo(
-                    $v->placa,
-                    $v->nome,
-                    $v->anoFabricacao,
-                    $v->fabricante,
-                    $v->opcionais,
-                    $v->motorizacao,
-                    $v->valorBase,
-                    $v->categoria
+                    $row->placa,
+                    $row->nome,
+                    $row->anoFabricacao,
+                    $row->fabricante,
+                    null, // Opcionais (pode adicionar se necessário)
+                    null, // Motorização (pode adicionar se necessário)
+                    $row->valorBase,
+                    $row->categoria // Categoria agora aparece corretamente
                 );
 
                 $veiculos[] = $veiculo;
@@ -83,7 +84,9 @@ final class VeiculoDAO
         return $veiculos;
     }
 
-    public function getVeiculo(string $placa) : Veiculo {
+
+    public function getVeiculo(string $placa): Veiculo
+    {
         $sql = $this->conn->prepare("
         SELECT 
             v.placa, 
@@ -95,7 +98,7 @@ final class VeiculoDAO
             v.valorBase, 
             c.descricao as categoria
         FROM veiculos v
-        INNER JOIN categorias c
+        INNER JOIN categoria c
         ON v.id_categoria = c.id_categoria
         WHERE v.placa = :placa");
 
@@ -115,7 +118,8 @@ final class VeiculoDAO
         );
     }
 
-    public function atualizarVeiculo(Veiculo $veiculo) {
+    public function atualizarVeiculo(Veiculo $veiculo)
+    {
         $sql = $this->conn->prepare("
             UPDATE veiculos
             SET 
@@ -142,11 +146,11 @@ final class VeiculoDAO
         $sql->execute();
     }
 
-    public function deleteVeiculo(string $placa) {
+    public function deleteVeiculo(string $placa)
+    {
         $sql = $this->conn->prepare("DELETE FROM veiculos WHERE placa = :placa");
         $sql->bindValue(":placa", $placa);
 
         $sql->execute();
     }
 }
-?>
