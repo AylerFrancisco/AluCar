@@ -59,18 +59,21 @@ final class VeiculoDAO
     public function getVeiculos()
     {
         $sql = $this->conn->query("
-        SELECT 
-            v.placa, 
-            v.nome, 
-            v.fabricante, 
-            v.anoFabricacao, 
-            v.valorBase, 
-            c.descricao AS categoria,
-            v.descricao,
-            v.resumo   
-        FROM veiculos v
-        INNER JOIN categoria c
-        ON v.id_categoria = c.id_categoria");
+    SELECT 
+        v.placa, 
+        v.nome,
+        v.anoFabricacao, 
+        v.fabricante, 
+        v.opcionais,
+        v.motorizacao,
+        v.valorBase, 
+        v.id_categoria,
+        v.descricao,
+        c.descricao AS categoria,
+        v.resumo
+    FROM veiculos v
+    INNER JOIN categoria c
+    ON v.id_categoria = c.id_categoria");
 
         $veiculos = [];
         if ($sql->rowCount() > 0) {
@@ -80,11 +83,12 @@ final class VeiculoDAO
                     $row->nome,
                     $row->anoFabricacao,
                     $row->fabricante,
-                    null, // Opcionais (pode adicionar se necessário)
-                    null, // Motorização (pode adicionar se necessário)
+                    $row->opcionais,
+                    $row->motorizacao,
                     $row->valorBase,
+                    $row->id_categoria,
+                    $row->descricao,
                     $row->categoria, // Categoria agora aparece corretamente
-                    $row->descricao,  // Novo campo
                     $row->resumo
                 );
 
@@ -95,8 +99,7 @@ final class VeiculoDAO
         return $veiculos;
     }
 
-
-    public function getVeiculo(string $placa): Veiculo
+    public function getVeiculo(string $placa)
     {
         $sql = $this->conn->prepare("
         SELECT 
@@ -108,6 +111,7 @@ final class VeiculoDAO
             v.motorizacao, 
             v.valorBase, 
             c.descricao as categoria,
+            v.id_categoria,
             v.descricao,
             v.resumo
         FROM veiculos v
@@ -128,6 +132,7 @@ final class VeiculoDAO
             $v->motorizacao,
             $v->valorBase,
             $v->categoria,
+            $v->id_categoria,
             $v->descricao,    // Novo campo
             $v->resumo
         );
@@ -158,7 +163,7 @@ final class VeiculoDAO
         $sql->bindValue(":opcionais", $veiculo->opcionais);
         $sql->bindValue(":motorizacao", $veiculo->motorizacao);
         $sql->bindValue(":valorBase", $veiculo->valorBase);
-        $sql->bindValue(":id_categoria", $veiculo->id_categoria);
+        $sql->bindValue(":id_categoria", $veiculo->__get('id_categoria'));
         $sql->bindValue(":descricao", $veiculo->descricao);  // Novo campo
         $sql->bindValue(":resumo", $veiculo->resumo);        // Novo campo
 

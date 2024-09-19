@@ -9,11 +9,13 @@ class Veiculo
     private $opcionais;
     private $motorizacao;
     private $valorBase;
-    private $descricao;  // Novo atributo
-    private $resumo;     // Novo atributo
     private $id_categoria;
+    private $descricao;
+    private $categoria;  // Novo atributo
+    private $resumo;     // Novo atributo
 
-    public function __construct($placa, $nome, $anoFabricacao, $fabricante, $opcionais, $motorizacao, $valorBase, $id_categoria, $descricao, $resumo)
+
+     public function __construct($placa, $nome, $anoFabricacao, $fabricante, $opcionais, $motorizacao, $valorBase, $id_categoria, $descricao, $categoria, $resumo)
     {
         $this->placa = $placa;
         $this->nome = $nome;
@@ -23,7 +25,8 @@ class Veiculo
         $this->motorizacao = $motorizacao;
         $this->valorBase = $valorBase;
         $this->id_categoria = $id_categoria;
-        $this->descricao = $descricao;  // Inicialização do atributo
+        $this->descricao = $descricao;
+        $this->categoria = $categoria;
         $this->resumo = $resumo;
     }
 

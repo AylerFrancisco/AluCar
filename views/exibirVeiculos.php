@@ -28,7 +28,7 @@ require_once '../dao/veiculoDao.inc.php'; // Inclui a classe VeiculoDAO
                   // Instancia a classe VeiculoDAO para buscar os veículos no banco de dados
                   $veiculoDao = new VeiculoDAO();
                   $veiculos = $veiculoDao->getVeiculos();
-
+                  var_dump($veiculos);
                   // Exibição dos veículos na tabela
                   foreach ($veiculos as $veiculo) {
                         echo "<tr align='center'>";
@@ -37,10 +37,11 @@ require_once '../dao/veiculoDao.inc.php'; // Inclui a classe VeiculoDAO
                         echo "<td>" . $veiculo->__get('fabricante') . "</td>";
                         echo "<td>" . $veiculo->__get('anoFabricacao') . "</td>";
                         echo "<td>R$ " . number_format($veiculo->__get('valorBase'), 2, ',', '.') . "</td>";
-                        echo "<td>" . $veiculo->__get('id_categoria') . "</td>";
+                        echo "<td>" . $veiculo->__get('categoria') . "</td>";
                         echo "<td>" . $veiculo->__get('resumo') . "</td>";  // Exibe o resumo
                         echo "<td>" . $veiculo->__get('descricao') . "</td>";  // Exibe a descrição
                         echo "<td><a href='#' class='btn btn-success btn-sm'>Reservar</a> ";
+                        echo "<a href='../controlers/controlerVeiculo.php?opcao=4&placa=" . $veiculo->__get('placa') . "' class='btn btn-info btn-sm'>Alterar</a>"; 
                         echo "<a href='#' class='btn btn-danger btn-sm'>Excluir</a></td>";
                         echo "</tr>";
                   }
