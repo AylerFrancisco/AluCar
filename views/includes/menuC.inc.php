@@ -16,7 +16,7 @@
       </a>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="../views/formSocio.php">Cadastrar</a></li>
-        <li><a class="dropdown-item" href="#">Seus dados</a></li>
+        <li><a class="dropdown-item" href="../views/meusDados.php">Seus dados</a></li>
       </ul>
     </li>
 

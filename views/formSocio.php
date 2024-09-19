@@ -30,6 +30,11 @@ require_once "includes/cabecalho.inc.php";
         <label for="pEmail" class="form-label">Email</label>
         <input type="text" class="form-control" name="pEmail">
     </div>
+    <div class="col-md-2">
+        <label for="pSenha" class="form-label">Senha</label>
+        <input type="text" class="form-control" name="pSenha">
+    </div>
+    
 
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Incluir</button>

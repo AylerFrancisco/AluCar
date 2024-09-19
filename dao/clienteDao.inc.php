@@ -15,7 +15,7 @@ class ClienteDao
     public function autenticar($email, $senha)
     {
 
-        $sql = $this->con->prepare("select * from usuarios where email = :email and senha = :pass");
+        $sql = $this->con->prepare("select * from socios where email = :email and senha = :pass");
 
         $email = strtoupper($email);
         $senha = strtolower($senha);
