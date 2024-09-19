@@ -12,10 +12,10 @@ if ($opcao == 2 || $opcao == 3) {
     session_start();
 
     $_SESSION["categorias"] = $categorias;
-    if ($opcao == 2) {
+    if ($opcao == 3) {
         header("Location: ../views/formVeiculo.php");
     }
-    if ($opcao == 3) {
+    if ($opcao == 2) {
         header("Location: ../views/formVeiculoAtualizar.php");
     }
 

@@ -2,6 +2,7 @@
 require_once "conexao.inc.php";
 require_once "../utils/funcoesUteis.php";
 require_once '../classes/veiculo.inc.php';
+require_once "categoriaDao.inc.php";
 
 final class VeiculoDAO
 {
@@ -59,7 +60,12 @@ final class VeiculoDAO
 
     public function getVeiculos()
     {
-        $sql = $this->con->query("select * from veiculos");
+        $sql = $this->con->query("
+         SELECT veiculos.*, categoria.descricao AS descricao_categoria
+        FROM veiculos
+        JOIN categoria ON veiculos.id_categoria = categoria.id_categoria
+        ");
+        $lista = array();
         while ($row = $sql->fetch(PDO::FETCH_OBJ)) {
             $veiculo = new Veiculo();
             $veiculo->__set('placa', $row->placa);
@@ -70,9 +76,9 @@ final class VeiculoDAO
             $veiculo->__set('motorizacao', $row->motorizacao);
             $veiculo->__set('valorBase', $row->valorBase);
             $veiculo->__set('id_categoria', $row->id_categoria);
-            $veiculo->__set('descrição', $row->descricao);
-            $veiculo->__set('categoria', $row->categoria); // Categoria agora aparece corretamente
+            $veiculo->__set('descricao', $row->descricao);
             $veiculo->__set('resumo', $row->resumo);
+            $veiculo->__set('categoria', $row->descricao_categoria);
             $lista[] = $veiculo;
         }
         return $lista;
@@ -93,8 +99,7 @@ final class VeiculoDAO
         $veiculo->__set('motorizacao', $row->motorizacao);
         $veiculo->__set('valorBase', $row->valorBase);
         $veiculo->__set('id_categoria', $row->id_categoria);
-        $veiculo->__set('descrição', $row->descricao);
-        $veiculo->__set('categoria', $row->categoria);
+        $veiculo->__set('descricao', $row->descricao);
         $veiculo->__set('resumo', $row->resumo);
 
         return $veiculo;

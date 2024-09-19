@@ -16,8 +16,8 @@ if (isset($_REQUEST['opcao'])) {
             $_REQUEST['vOpcionais'],
             $_REQUEST['vMotorizacao'],
             $_REQUEST['vValorBase'],
-            $_REQUEST['vCategoria'],
             $_REQUEST['vDescricao'],
+            $_REQUEST['vCategoria'],
             $_REQUEST['id_categoria'],
             $_REQUEST['vResumo']
         );
@@ -25,17 +25,18 @@ if (isset($_REQUEST['opcao'])) {
         $veiculoDAO = new VeiculoDAO();
         $veiculoDAO->incluirVeiculo($veiculo);
 
-        header("Location: controlerVeiculo.php");
+        header("Location: controlerVeiculo.php?opcao=2");
     }
     if ($opcao == 2 || $opcao == 6) {
-        session_start();
-        $veiculoDao = new VeiculoDAO();
-        $veicus = $veiculoDao->getVeiculos();
         
-        $_SESSION['veiculos'] = $veicus;
+        $veiculoDao = new VeiculoDAO();
+        $veics = $veiculoDao->getVeiculos();
+        session_start();
+        $_SESSION['veiculos'] = $veics;
+        //var_dump($veics);
         if ($opcao == 2) {
             header("Location: ../views/exibirVeiculos.php");
-        } else {
+        } elseif($opcao == 6) {
             header("Location: ../views/veiculoVenda.php");
         }
     }
@@ -57,9 +58,8 @@ if (isset($_REQUEST['opcao'])) {
             $_REQUEST['opcionais'],
             $_REQUEST['motorizacao'],
             $_REQUEST['valorBase'],
-            $_REQUEST['id_categoria'],  // Correto
+            $_REQUEST['id_categoria'], 
             $_REQUEST['descricao'],
-            $_REQUEST['categoria'],     // Nome da categoria, mas sendo usado duas vezes
             $_REQUEST['resumo']
         );
 

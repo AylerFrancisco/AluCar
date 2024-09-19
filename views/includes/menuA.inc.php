@@ -13,13 +13,13 @@
         Veículos
       </a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="../controlers/controlerCategoria.php?opcao=2">Cadastrar Veículo</a></li> <!-- Nova opção de cadastro -->
+        <li><a class="dropdown-item" href="../controlers/controlerCategoria.php?opcao=3">Cadastrar Veículo</a></li> <!-- Nova opção de cadastro -->
         <li><a class="dropdown-item" href="#">Cadastrar Vários</a></li>
         <li><a class="dropdown-item" href="../views/exibirVeiculos.php">Consultar</a></li>
         <li>
           <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="../controlers/controllerProduto.php?opcao=6">Show Room</a></li>
+        <li><a class="dropdown-item" href="../controlers/controlerVeiculo.php?opcao=6">Show Room</a></li>
       </ul>
     </li>
 
