@@ -2,7 +2,7 @@
 require_once "includes/cabecalho.inc.php";
 ?>
 <p>
-<h1 class="text-center">Inclusão de produto</h1>
+<h1 class="text-center">Inclusão de Sócio</h1>
 <p>
 
 <form class="row g-3" action="../controlers/controlerSocio.php" method="post">
