@@ -1,8 +1,6 @@
 <?php
 require_once '../classes/veiculo.inc.php';
 require_once 'includes/cabecalho.inc.php'; // Inclui o cabeçalho da página
-
-session_start();
 $veiculos = $_SESSION['veiculos'];
 
 var_dump($veiculos);
@@ -21,18 +19,13 @@ var_dump($veiculos);
                         <th>Ano</th>
                         <th>Preço Base</th>
                         <th>Categoria</th>
-                        <th>Resumo</th> <!-- Nova coluna -->
+                        <th>Resumo</th> 
                         <th>Descrição</th> <!-- Nova coluna -->
                         <th>Operações</th>
                   </tr>
             </thead>
             <tbody class="table-group-divider">
                   <?php
-                  // Instancia a classe VeiculoDAO para buscar os veículos no banco de dados
-                  // $veiculoDao = new VeiculoDAO();
-                  // $veiculos = $veiculoDao->getVeiculos();
-                  // var_dump($veiculos);
-                  // Exibição dos veículos na tabela
                   foreach ($veiculos as $veiculo) {
                         echo "<tr align='center'>";
                         echo "<td>" . $veiculo->__get('placa') . "</td>";
