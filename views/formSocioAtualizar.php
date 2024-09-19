@@ -12,7 +12,7 @@ $socio = $_SESSION['socio'];
 <form class="row g-3" action="../controlers/controlerSocio.php?opcao=2" method="post">
     <div class="col-md-3">
         <label for="pCpf" class="form-label">Cpf:</label>
-        <input type="text" class="form-control" name="pCpf" value="<?= $socio->cpf?>">
+        <input type="text" class="form-control" name="pCpf" value="<?= $socio->cpf ?>">
     </div>
     <div class="col-md-6">
         <label for="pNome" class="form-label">Nome:</label>
@@ -33,6 +33,10 @@ $socio = $_SESSION['socio'];
     <div class="col-md-4">
         <label for="pEmail" class="form-label">Email:</label>
         <input type="text" class="form-control" name="pEmail" value="<?php echo $socio->email ?>">
+    </div>
+    <div class="col-md-2">
+        <label for="pEmail" class="form-label">Senha:</label>
+        <input type="text" class="form-control" name="pSenha" value="<?php echo $socio->senha ?>">
     </div>
 
     <div class="col-12">

@@ -13,7 +13,7 @@
         }
 
         public function incluirSocio(Socio $socio){
-            $sql = $this->con->prepare("insert into socios(cpf,nome,rg,endereco,telefone,email) values(:cpf,:nome,:rg,:endereco,:telefone,:email)");
+            $sql = $this->con->prepare("insert into socios(cpf,nome,rg,endereco,telefone,email,senha) values(:cpf,:nome,:rg,:endereco,:telefone,:email,:senha)");
 
             $sql->bindValue(':cpf',$socio->cpf);
             $sql->bindValue(':nome',$socio->nome);
@@ -21,6 +21,7 @@
             $sql->bindValue(':endereco', $socio->endereco);
             $sql->bindValue(':telefone', $socio->telefone);
             $sql->bindValue(':email', $socio->email);
+            $sql->bindValue(':senha', $socio->senha);
             $sql->execute();
             
             
@@ -58,14 +59,14 @@
 
 
         public function getSocio($cpf){
-            $sql= $this->con->prepare("SELECT cpf,nome,rg,endereco,telefone,email FROM socios WHERE cpf = :cpf");
+            $sql= $this->con->prepare("SELECT * FROM socios WHERE cpf = :cpf");
             $sql->bindValue(':cpf', $cpf);
             $sql->execute();
 
             $row = $sql->fetch(PDO::FETCH_OBJ);
             
             $socio = new Socio;
-            $socio->setSocio($row->cpf, $row->nome, $row->rg, $row->endereco, $row->telefone, $row->email);
+            $socio->setSocio($row->cpf, $row->nome, $row->rg, $row->endereco, $row->telefone, $row->email,$row->senha);
 
             
 
@@ -75,7 +76,7 @@
 
 
         public function atualizarSocio(Socio $socio){
-            $sql= $this->con->prepare("update socios set cpf = :cpf , nome= :nome , rg = :rg , endereco= :endereco,telefone= :telefone, email= :email where cpf = :cpf2");
+            $sql= $this->con->prepare("update socios set cpf = :cpf , nome= :nome , rg = :rg , endereco= :endereco,telefone= :telefone, email= :email,senha = :senha where cpf = :cpf2");
 
             
             $sql->bindValue(':cpf', $socio->cpf);
@@ -84,6 +85,7 @@
             $sql->bindValue(':endereco', $socio->endereco);
             $sql->bindValue(':telefone', $socio->telefone);
             $sql->bindValue(':email', $socio->email);
+            $sql->bindValue(':senha', $socio->senha);
             $sql->bindValue(':cpf2', $socio->cpf);
             $sql->execute();
 

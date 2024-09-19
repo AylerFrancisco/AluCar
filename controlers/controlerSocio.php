@@ -6,13 +6,13 @@ $opcao = (int)$_REQUEST['opcao'];
 if ($opcao == 1) //  inclusão
 {
     $socio = new Socio();
-    $socio->setSocio($_REQUEST['pCpf'], $_REQUEST['pNome'], $_REQUEST['pRg'], $_REQUEST['pEndereco'], $_REQUEST['pTelefone'], $_REQUEST['pEmail']);
+    $socio->setSocio($_REQUEST['pCpf'], $_REQUEST['pNome'], $_REQUEST['pRg'], $_REQUEST['pEndereco'], $_REQUEST['pTelefone'], $_REQUEST['pEmail'], $_REQUEST['pSenha']);
 
     $socioDao = new SocioDao();
     $socioDao->incluirSocio($socio);
 
+    
     header("Location:controlerSocio.php?opcao=2");
-
 }
 
 if ($opcao == 2)
@@ -22,6 +22,8 @@ if ($opcao == 2)
 
     session_start();
     $_SESSION['socios'] = $lista;
+
+    
 
     header("Location:../views/exibirSocios.php");
 }
@@ -51,7 +53,7 @@ if($opcao == 4){
 }
 if ($opcao == 5){
     $socio= new Socio();
-    $socio->setSocio($_POST['pCpf'], $_POST['pNome'], $_POST['pRg'], $_POST['pEndereco'], $_POST['pTelefone'], $_POST['pEmail']);
+    $socio->setSocio($_POST['pCpf'], $_POST['pNome'], $_POST['pRg'], $_POST['pEndereco'], $_POST['pTelefone'], $_POST['pEmail'], $_POST['pSenha']);
 
 
     $socioDao= new SocioDao();
@@ -63,6 +65,15 @@ if ($opcao == 5){
 
 }
 
+if ($opcao == 3) {
+    $cpf = (int)$_REQUEST['cpf'];
 
+    $socioDao = new SocioDao();
+    $socioDao->excluirSocio($cpf);
+
+
+
+    header("Location:controlerCliente.php?opcao=2");
+}
 
 ?>
