@@ -1,8 +1,11 @@
 <?php
+require_once '../classes/veiculo.inc.php';
 require_once 'includes/cabecalho.inc.php'; // Inclui o cabeçalho da página
-require_once '../classes/veiculo.inc.php'; // Inclui a classe Veiculo
-require_once '../dao/veiculoDao.inc.php'; // Inclui a classe VeiculoDAO
 
+session_start();
+$veiculos = $_SESSION['veiculos'];
+
+var_dump($veiculos);
 ?>
 
 <p>
@@ -26,9 +29,9 @@ require_once '../dao/veiculoDao.inc.php'; // Inclui a classe VeiculoDAO
             <tbody class="table-group-divider">
                   <?php
                   // Instancia a classe VeiculoDAO para buscar os veículos no banco de dados
-                  $veiculoDao = new VeiculoDAO();
-                  $veiculos = $veiculoDao->getVeiculos();
-                  var_dump($veiculos);
+                  // $veiculoDao = new VeiculoDAO();
+                  // $veiculos = $veiculoDao->getVeiculos();
+                  // var_dump($veiculos);
                   // Exibição dos veículos na tabela
                   foreach ($veiculos as $veiculo) {
                         echo "<tr align='center'>";
@@ -41,7 +44,7 @@ require_once '../dao/veiculoDao.inc.php'; // Inclui a classe VeiculoDAO
                         echo "<td>" . $veiculo->__get('resumo') . "</td>";  // Exibe o resumo
                         echo "<td>" . $veiculo->__get('descricao') . "</td>";  // Exibe a descrição
                         echo "<td><a href='#' class='btn btn-success btn-sm'>Reservar</a> ";
-                        echo "<a href='../controlers/controlerVeiculo.php?opcao=4&placa=" . $veiculo->__get('placa') . "' class='btn btn-info btn-sm'>Alterar</a>"; 
+                        echo "<a href='../controlers/controlerVeiculo.php?opcao=4&placa=" . $veiculo->__get('placa') . "' class='btn btn-info btn-sm'>Alterar</a>";
                         echo "<a href='#' class='btn btn-danger btn-sm'>Excluir</a></td>";
                         echo "</tr>";
                   }

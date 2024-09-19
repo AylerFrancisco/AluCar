@@ -67,7 +67,7 @@ var_dump($categorias);
     <button type="submit" class="btn btn-primary">Incluir</button>
     <button type="reset" class="btn btn-danger">Cancelar</button>
   </div>
-  <input type="hidden" name="opcao" value="1">
+  <input type="hidden" name="opcao" value="1&<?php $veiculo->__get('id_categoria'); ?>">
 </form>
 
 <?php

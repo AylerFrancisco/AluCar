@@ -7,7 +7,8 @@ if (isset($_REQUEST['opcao'])) {
 
     if ($opcao == 1) {
 
-        $veiculo = new Veiculo(
+        $veiculo = new Veiculo();
+        $veiculo->setVeiculo(
             $_REQUEST['vPlaca'],
             $_REQUEST['vNome'],
             $_REQUEST['vAnoFabricacao'],
@@ -17,14 +18,26 @@ if (isset($_REQUEST['opcao'])) {
             $_REQUEST['vValorBase'],
             $_REQUEST['vCategoria'],
             $_REQUEST['vDescricao'],
-            $_REQUEST['vCategoria'],
+            $_REQUEST['id_categoria'],
             $_REQUEST['vResumo']
         );
 
         $veiculoDAO = new VeiculoDAO();
         $veiculoDAO->incluirVeiculo($veiculo);
 
-        header("Location: ../views/exibirVeiculos.php");
+        header("Location: controlerVeiculo.php");
+    }
+    if ($opcao == 2 || $opcao == 6) {
+        session_start();
+        $veiculoDao = new VeiculoDAO();
+        $veicus = $veiculoDao->getVeiculos();
+        
+        $_SESSION['veiculos'] = $veicus;
+        if ($opcao == 2) {
+            header("Location: ../views/exibirVeiculos.php");
+        } else {
+            header("Location: ../views/veiculoVenda.php");
+        }
     }
     if ($opcao == 4) {
         $placa = $_REQUEST['placa'];
@@ -61,6 +74,5 @@ if (isset($_REQUEST['opcao'])) {
     }
     if ($opcao == 6) {
         header("Location: ../views/exibirVeiculos.php");
-        exit();
     }
 }

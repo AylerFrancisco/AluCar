@@ -1,20 +1,21 @@
 <?php
 require_once "conexao.inc.php";
 require_once "../utils/funcoesUteis.php";
+require_once '../classes/veiculo.inc.php';
 
 final class VeiculoDAO
 {
-    private PDO $conn;
+    private PDO $con;
 
     public function __construct()
     {
         $c = new Conexao();
-        $this->conn = $c->getConexao();
+        $this->con = $c->getConexao();
     }
 
     public function incluirVeiculo(Veiculo $veiculo)
     {
-        $sql = $this->conn->prepare("
+        $sql = $this->con->prepare("
             INSERT INTO veiculos (
                 placa, 
                 nome, 
@@ -58,89 +59,50 @@ final class VeiculoDAO
 
     public function getVeiculos()
     {
-        $sql = $this->conn->query("
-    SELECT 
-        v.placa, 
-        v.nome,
-        v.anoFabricacao, 
-        v.fabricante, 
-        v.opcionais,
-        v.motorizacao,
-        v.valorBase, 
-        v.id_categoria,
-        v.descricao,
-        c.descricao AS categoria,
-        v.resumo
-    FROM veiculos v
-    INNER JOIN categoria c
-    ON v.id_categoria = c.id_categoria");
-
-        $veiculos = [];
-        if ($sql->rowCount() > 0) {
-            while ($row = $sql->fetch(PDO::FETCH_OBJ)) {
-                $veiculo = new Veiculo(
-                    $row->placa,
-                    $row->nome,
-                    $row->anoFabricacao,
-                    $row->fabricante,
-                    $row->opcionais,
-                    $row->motorizacao,
-                    $row->valorBase,
-                    $row->id_categoria,
-                    $row->descricao,
-                    $row->categoria, // Categoria agora aparece corretamente
-                    $row->resumo
-                );
-
-                $veiculos[] = $veiculo;
-            }
+        $sql = $this->con->query("select * from veiculos");
+        while ($row = $sql->fetch(PDO::FETCH_OBJ)) {
+            $veiculo = new Veiculo();
+            $veiculo->__set('placa', $row->placa);
+            $veiculo->__set('nome', $row->nome);
+            $veiculo->__set('anoFabricacao', $row->anoFabricacao);
+            $veiculo->__set('fabricante', $row->fabricante);
+            $veiculo->__set('opcionais', $row->opcionais);
+            $veiculo->__set('motorizacao', $row->motorizacao);
+            $veiculo->__set('valorBase', $row->valorBase);
+            $veiculo->__set('id_categoria', $row->id_categoria);
+            $veiculo->__set('descrição', $row->descricao);
+            $veiculo->__set('categoria', $row->categoria); // Categoria agora aparece corretamente
+            $veiculo->__set('resumo', $row->resumo);
+            $lista[] = $veiculo;
         }
-
-        return $veiculos;
+        return $lista;
     }
 
     public function getVeiculo(string $placa)
     {
-        $sql = $this->conn->prepare("
-        SELECT 
-            v.placa, 
-            v.nome, 
-            v.anoFabricacao, 
-            v.fabricante, 
-            v.opcionais, 
-            v.motorizacao, 
-            v.valorBase, 
-            c.descricao as categoria,
-            v.id_categoria,
-            v.descricao,
-            v.resumo
-        FROM veiculos v
-        INNER JOIN categoria c
-        ON v.id_categoria = c.id_categoria
-        WHERE v.placa = :placa");
-
-        $sql->bindValue(":placa", $placa);
+        $sql = $this->con->query("select * from veiculos where placa=:placa");
+        $sql->bindValue(":id", $placa);
         $sql->execute();
+        $row = $sql->fetch(PDO::FETCH_OBJ);
+        $veiculo = new Veiculo();
+        $veiculo->__set('placa', $row->placa);
+        $veiculo->__set('nome', $row->nome);
+        $veiculo->__set('anoFabricacao', $row->anoFabricacao);
+        $veiculo->__set('fabricante', $row->fabricante);
+        $veiculo->__set('opcionais', $row->opcionais);
+        $veiculo->__set('motorizacao', $row->motorizacao);
+        $veiculo->__set('valorBase', $row->valorBase);
+        $veiculo->__set('id_categoria', $row->id_categoria);
+        $veiculo->__set('descrição', $row->descricao);
+        $veiculo->__set('categoria', $row->categoria);
+        $veiculo->__set('resumo', $row->resumo);
 
-        $v = $sql->fetch(PDO::FETCH_OBJ);
-        return new Veiculo(
-            $v->placa,
-            $v->nome,
-            $v->anoFabricacao,
-            $v->fabricante,
-            $v->opcionais,
-            $v->motorizacao,
-            $v->valorBase,
-            $v->categoria,
-            $v->id_categoria,
-            $v->descricao,    // Novo campo
-            $v->resumo
-        );
+        return $veiculo;
     }
 
     public function atualizarVeiculo(Veiculo $veiculo)
     {
-        $sql = $this->conn->prepare("
+        $sql = $this->con->prepare("
             UPDATE veiculos
             SET 
                 nome = :nome, 
@@ -149,7 +111,6 @@ final class VeiculoDAO
                 opcionais = :opcionais, 
                 motorizacao = :motorizacao, 
                 valorBase = :valorBase, 
-                id_categoria = :id_categoria,
                 descricao = :descricao,       
                 resumo = :resumo            
             WHERE
@@ -163,7 +124,6 @@ final class VeiculoDAO
         $sql->bindValue(":opcionais", $veiculo->opcionais);
         $sql->bindValue(":motorizacao", $veiculo->motorizacao);
         $sql->bindValue(":valorBase", $veiculo->valorBase);
-        $sql->bindValue(":id_categoria", $veiculo->__get('id_categoria'));
         $sql->bindValue(":descricao", $veiculo->descricao);  // Novo campo
         $sql->bindValue(":resumo", $veiculo->resumo);        // Novo campo
 
@@ -173,7 +133,7 @@ final class VeiculoDAO
 
     public function deleteVeiculo(string $placa)
     {
-        $sql = $this->conn->prepare("DELETE FROM veiculos WHERE placa = :placa");
+        $sql = $this->con->prepare("DELETE FROM veiculos WHERE placa = :placa");
         $sql->bindValue(":placa", $placa);
 
         $sql->execute();
