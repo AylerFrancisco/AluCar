@@ -37,7 +37,7 @@ if (isset($_REQUEST['opcao'])) {
         if ($opcao == 2) {
             header("Location: ../views/exibirVeiculos.php");
         } elseif($opcao == 6) {
-            header("Location: ../views/veiculoVenda.php");
+            header("Location: ../views/veiculosVenda.php");
         }
     }
     if ($opcao == 4) {
@@ -70,9 +70,6 @@ if (isset($_REQUEST['opcao'])) {
         $veiculoDAO->atualizarVeiculo($veiculo);
 
         // Redireciona para a página de exibição de veículos
-        header("Location: ../views/exibirVeiculos.php");
-    }
-    if ($opcao == 6) {
         header("Location: ../views/exibirVeiculos.php");
     }
 }
