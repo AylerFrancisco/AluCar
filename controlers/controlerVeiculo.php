@@ -70,7 +70,7 @@ if (isset($_REQUEST['opcao'])) {
         // Instancia o DAO e chama o método de atualização
         $veiculoDAO = new VeiculoDAO();
         $veiculoDAO->atualizarVeiculo($veiculo);
-        var_dump($veiculo);
+        
 
         // Redireciona para a página de exibição de veículos
         header("Location: controlerVeiculo.php?opcao=2");
@@ -79,7 +79,51 @@ if (isset($_REQUEST['opcao'])) {
         $placa = $_REQUEST['placa'];
         $veiculoDAO = new VeiculoDAO();
         $veiculoDAO->deleteVeiculo($placa);
-        var_dump($veiculo);
+        
         header("Location: controlerVeiculo.php?opcao=2");
+    }
+
+    if($opcao ==8){
+        $placa = $_REQUEST['pPlaca'];
+        $veiculoDAO = new VeiculoDAO();
+        $veiculo = $veiculoDAO->pesquisaPlaca($placa);
+        $_SESSION['veiculos']=$veics;
+        
+
+
+        header("Location: ../controlers/controlerCategoria.php?opcao=6");
+    }
+
+    if ($opcao == 9) {
+        $nome = $_REQUEST['pNome'];
+        $veiculoDAO = new VeiculoDAO();
+        $veiculo = $veiculoDAO->pesquisaPlaca($nome);
+        $_SESSION['veiculos'] = $veics;
+
+
+
+        header("Location: ../controlers/controlerCategoria.php?opcao=6");
+    }
+
+    if ($opcao == 10) {
+        $fabricante = $_REQUEST['pFabricante'];
+        $veiculoDAO = new VeiculoDAO();
+        $veiculo = $veiculoDAO->pesquisaPlaca($fabricante);
+        $_SESSION['veiculos'] = $veics;
+
+
+
+        header("Location: ../controlers/controlerCategoria.php?opcao=6");
+    }
+
+    if ($opcao == 11) {
+        $motorizacao = $_REQUEST['pMotorização'];
+        $veiculoDAO = new VeiculoDAO();
+        $veiculo = $veiculoDAO->pesquisaPlaca($motorizacao);
+        $_SESSION['veiculos'] = $veics;
+
+
+
+        header("Location: ../controlers/controlerCategoria.php?opcao=6");
     }
 }

@@ -143,4 +143,104 @@ final class VeiculoDAO
 
         $sql->execute();
     }
+
+    public function pesquisaPlaca($placa){
+        $sql=$this->con->prepare("select * from veiculos where placa = :placa");
+        $sql->bindValue(":placa", $placa);
+        $sql->execute();
+
+        $lista = array();
+        while ($row = $sql->fetch(PDO::FETCH_OBJ)) {
+            $veiculo = new Veiculo();
+            $veiculo->__set('placa', $row->placa);
+            $veiculo->__set('nome', $row->nome);
+            $veiculo->__set('anoFabricacao', $row->anoFabricacao);
+            $veiculo->__set('fabricante', $row->fabricante);
+            $veiculo->__set('opcionais', $row->opcionais);
+            $veiculo->__set('motorizacao', $row->motorizacao);
+            $veiculo->__set('valorBase', $row->valorBase);
+            $veiculo->__set('id_categoria', $row->id_categoria);
+            $veiculo->__set('descricao', $row->descricao);
+            $veiculo->__set('resumo', $row->resumo);
+            $veiculo->__set('categoria', $row->descricao_categoria);
+            $lista[] = $veiculo;
+        }
+        return $lista;
+
+    }
+
+    public function pesquisaNome($nome)
+    {
+        $sql = $this->con->prepare("select * from veiculos where nome = :nome");
+        $sql->bindValue(":nome", $nome);
+        $sql->execute();
+
+        $lista = array();
+        while ($row = $sql->fetch(PDO::FETCH_OBJ)) {
+            $veiculo = new Veiculo();
+            $veiculo->__set('placa', $row->placa);
+            $veiculo->__set('nome', $row->nome);
+            $veiculo->__set('anoFabricacao', $row->anoFabricacao);
+            $veiculo->__set('fabricante', $row->fabricante);
+            $veiculo->__set('opcionais', $row->opcionais);
+            $veiculo->__set('motorizacao', $row->motorizacao);
+            $veiculo->__set('valorBase', $row->valorBase);
+            $veiculo->__set('id_categoria', $row->id_categoria);
+            $veiculo->__set('descricao', $row->descricao);
+            $veiculo->__set('resumo', $row->resumo);
+            $veiculo->__set('categoria', $row->descricao_categoria);
+            $lista[] = $veiculo;
+        }
+        return $lista;
+    }
+
+    public function pesquisaFabricante($fabricante)
+    {
+        $sql = $this->con->prepare("select * from veiculos where fabricante = :fabricante");
+        $sql->bindValue(":fabricante", $fabricante);
+        $sql->execute();
+
+        $lista = array();
+        while ($row = $sql->fetch(PDO::FETCH_OBJ)) {
+            $veiculo = new Veiculo();
+            $veiculo->__set('placa', $row->placa);
+            $veiculo->__set('nome', $row->nome);
+            $veiculo->__set('anoFabricacao', $row->anoFabricacao);
+            $veiculo->__set('fabricante', $row->fabricante);
+            $veiculo->__set('opcionais', $row->opcionais);
+            $veiculo->__set('motorizacao', $row->motorizacao);
+            $veiculo->__set('valorBase', $row->valorBase);
+            $veiculo->__set('id_categoria', $row->id_categoria);
+            $veiculo->__set('descricao', $row->descricao);
+            $veiculo->__set('resumo', $row->resumo);
+            $veiculo->__set('categoria', $row->descricao_categoria);
+            $lista[] = $veiculo;
+        }
+        return $lista;
+    }
+
+    public function pesquisaMotorizacao($motorizacao)
+    {
+        $sql = $this->con->prepare("select * from veiculos where motorizacao = :motorizacao");
+        $sql->bindValue(":motorizacao", $motorizacao);
+        $sql->execute();
+
+        $lista = array();
+        while ($row = $sql->fetch(PDO::FETCH_OBJ)) {
+            $veiculo = new Veiculo();
+            $veiculo->__set('placa', $row->placa);
+            $veiculo->__set('nome', $row->nome);
+            $veiculo->__set('anoFabricacao', $row->anoFabricacao);
+            $veiculo->__set('fabricante', $row->fabricante);
+            $veiculo->__set('opcionais', $row->opcionais);
+            $veiculo->__set('motorizacao', $row->motorizacao);
+            $veiculo->__set('valorBase', $row->valorBase);
+            $veiculo->__set('id_categoria', $row->id_categoria);
+            $veiculo->__set('descricao', $row->descricao);
+            $veiculo->__set('resumo', $row->resumo);
+            $veiculo->__set('categoria', $row->descricao_categoria);
+            $lista[] = $veiculo;
+        }
+        return $lista;
+    }
 }
