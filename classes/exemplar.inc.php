@@ -2,31 +2,34 @@
 
 class Exemplar
 {
-    private $id_exemplar;
-    private $placa_veiculo;
-    private $id_locacao;
-    private $locado;
+    private Veiculo $veiculo;
+    private $disponolidade;
+    private $valorExemplar;
 
-    public function __construct($id_exemplar, $placa_veiculo, $id_locacao, $locado)
+    function __construct($veiculo)
     {
-        $this->id_exemplar = $id_exemplar;
-        $this->placa_veiculo = $placa_veiculo;
-        $this->id_locacao = $id_locacao;
-        $this->locado = $locado;
+        $this->veiculo = $veiculo;
+        $this->disponolidade = 1;
+        $this->valorExemplar = $this->veiculo->getValorBase();
     }
-
-    public function __get($name)
+    public function getValorExemplar()
     {
-        return $this->$name;
+        return $this->valorExemplar;
     }
-
-    public function __set($name, $value)
+    public function setValorItem()
     {
-        $this->$name = $value;
+        $this->valorExemplar = $this->disponolidade * $this->veiculo->getValorBase();
     }
-
-    public function __toString()
+    public function setDisponibilidade()
     {
-        return "Exemplar ID: {$this->id_exemplar}, Veículo: {$this->placa_veiculo}, Locado: {$this->locado}";
+        $this->disponolidade = 0;
+    }
+    public function getDisponibilidade(){
+        return $this->disponolidade;
+
+    }
+    public function getVeiculo()
+    {
+        return $this->veiculo;
     }
 }

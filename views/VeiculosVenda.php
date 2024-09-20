@@ -24,6 +24,7 @@ include_once 'includes/cabecalho.inc.php';
           <h6 class="card-text text-end">Marca: <?= $veiculo->id_categoria ?></h6>
           <h4 class="card-title"><?= number_format($veiculo->valorBase, 2, ',', '.') ?></h4>
           <div class="text-end">
+          <?php echo "<a href='../controlers/controlerCarrinho.php?opcao=1&placa=" . $veiculo->getPlaca() . "' class='btn btn-danger'>Comprar</a>" ?>
           </div>
         </div>
       </div>
