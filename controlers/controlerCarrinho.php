@@ -19,7 +19,7 @@ if ($opcao == 1) {
         $_SESSION["carrinho"] = [];
     }
 
-    $_SESSION["carrinho"][] = $item;
+    $_SESSION["carrinho"][] = $exemp;
 
     header("Location: ../views/exibirCarrinho.php");
 }
