@@ -25,4 +25,15 @@ if ($opcao == 2) {
 
     header("Location:../views/index.php");
 }
+
+if ($opcao == 3) {
+    
+    if ($cliente != NULL) {
+        session_start();
+        $_SESSION["cliente"] = $cliente;
+        header("Location:../views/meusDados.php");
+    } else {
+        header("Location:../views/formLogin.php");
+    }
+}
 ?>

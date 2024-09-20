@@ -11,8 +11,8 @@ if ($opcao == 1) //  inclusão
     $socioDao = new SocioDao();
     $socioDao->incluirSocio($socio);
 
-    
-    header("Location:controlerSocio.php?opcao=2");
+
+    header("Location: controlerVeiculo.php?opcao=2");
 }
 
 if ($opcao == 2)
