@@ -1,5 +1,11 @@
 <?php
 include_once 'includes/cabecalho.inc.php';
+
+$carrinho = $_SESSION['carrinho'];
+$cont = 1;
+$soma = 0;
+
+
 ?>
 <h1 class="text-center">Showroom de Veículos</h1>
 <p>
@@ -28,7 +34,8 @@ include_once 'includes/cabecalho.inc.php';
           <h4 class="card-title">R$ <?php echo number_format($veiculo['preco'], 2, ',', '.'); ?></h4>
           <!-- Botão de comprar -->
           <div class="text-end">
-            <a href="#" class="btn btn-danger">Comprar</a>
+            <?php echo "<a href='../controlers/controlerCarrinho.php?opcao=1$id=". $veiculo['placa']."' class='btn btn-danger'>Comprar</a>"
+            ?>
           </div>
         </div>
       </div>
