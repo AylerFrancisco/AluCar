@@ -72,7 +72,4 @@ if (isset($_REQUEST['opcao'])) {
         // Redireciona para a página de exibição de veículos
         header("Location: ../views/exibirVeiculos.php");
     }
-    if ($opcao == 6) {
-        header("Location: ../views/exibirVeiculos.php");
-    }
 }
