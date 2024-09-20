@@ -16,19 +16,19 @@ if (isset($_REQUEST['opcao'])) {
             $_REQUEST['vOpcionais'],
             $_REQUEST['vMotorizacao'],
             $_REQUEST['vValorBase'],
-            $_REQUEST['vDescricao'],
             $_REQUEST['vCategoria'],
-            $_REQUEST['id_categoria'],
+            $_REQUEST['vDescricao'],
+
             $_REQUEST['vResumo']
         );
-
+        //var_dump($veiculo);
         $veiculoDAO = new VeiculoDAO();
         $veiculoDAO->incluirVeiculo($veiculo);
 
         header("Location: controlerVeiculo.php?opcao=2");
     }
     if ($opcao == 2 || $opcao == 6) {
-        
+
         $veiculoDao = new VeiculoDAO();
         $veics = $veiculoDao->getVeiculos();
         session_start();
@@ -36,7 +36,7 @@ if (isset($_REQUEST['opcao'])) {
         //var_dump($veics);
         if ($opcao == 2) {
             header("Location: ../views/exibirVeiculos.php");
-        } elseif($opcao == 6) {
+        } elseif ($opcao == 6) {
             header("Location: ../views/veiculosVenda.php");
         }
     }
@@ -47,10 +47,11 @@ if (isset($_REQUEST['opcao'])) {
 
         session_start();
         $_SESSION["veiculo"] = $veiculo;
-        header("Location: ../controlers/controlerCategoria.php?opcao=3");
+        header("Location: ../controlers/controlerCategoria.php?opcao=2");
     }
     if ($opcao == 5) {
-        $veiculo = new Veiculo(
+        $veiculo = new Veiculo();
+        $veiculo->setVeiculo(
             $_REQUEST['placa'],
             $_REQUEST['nome'],
             $_REQUEST['anoFabricacao'],
@@ -58,8 +59,9 @@ if (isset($_REQUEST['opcao'])) {
             $_REQUEST['opcionais'],
             $_REQUEST['motorizacao'],
             $_REQUEST['valorBase'],
-            $_REQUEST['id_categoria'], 
+            $_REQUEST['categoria'],
             $_REQUEST['descricao'],
+
             $_REQUEST['resumo']
         );
 
@@ -68,8 +70,16 @@ if (isset($_REQUEST['opcao'])) {
         // Instancia o DAO e chama o método de atualização
         $veiculoDAO = new VeiculoDAO();
         $veiculoDAO->atualizarVeiculo($veiculo);
+        var_dump($veiculo);
 
         // Redireciona para a página de exibição de veículos
-        header("Location: ../views/exibirVeiculos.php");
+        header("Location: controlerVeiculo.php?opcao=2");
+    }
+    if ($opcao == 7) {
+        $placa = $_REQUEST['placa'];
+        $veiculoDAO = new VeiculoDAO();
+        $veiculoDAO->deleteVeiculo($placa);
+        var_dump($veiculo);
+        header("Location: controlerVeiculo.php?opcao=2");
     }
 }

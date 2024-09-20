@@ -38,7 +38,7 @@ var_dump($veiculos);
                         echo "<td>" . $veiculo->__get('descricao') . "</td>";  // Exibe a descrição
                         echo "<td><a href='#' class='btn btn-success btn-sm'>Reservar</a> ";
                         echo "<a href='../controlers/controlerVeiculo.php?opcao=4&placa=" . $veiculo->__get('placa') . "' class='btn btn-info btn-sm'>Alterar</a>";
-                        echo "<a href='#' class='btn btn-danger btn-sm'>Excluir</a></td>";
+                        echo "<a href='../controlers/controlerVeiculo.php?opcao=7&placa=" . $veiculo->__get('placa') . "' class='btn btn-danger btn-sm'>Excluir</a>";
                         echo "</tr>";
                   }
                   ?>

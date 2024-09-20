@@ -15,7 +15,7 @@ class Veiculo
     private $resumo;     // Novo atributo
 
 
-    public function setVeiculo($placa, $nome, $anoFabricacao, $fabricante, $opcionais, $motorizacao, $valorBase, $id_categoria, $descricao, $categoria, $resumo)
+    public function setVeiculo($placa, $nome, $anoFabricacao, $fabricante, $opcionais, $motorizacao, $valorBase, $id_categoria, $descricao, $resumo)
     {
         $this->placa = $placa;
         $this->nome = $nome;
@@ -26,7 +26,6 @@ class Veiculo
         $this->valorBase = $valorBase;
         $this->id_categoria = $id_categoria;
         $this->descricao = $descricao;
-        $this->categoria = $categoria;
         $this->resumo = $resumo;
     }
 

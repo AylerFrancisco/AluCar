@@ -27,7 +27,7 @@ var_dump($categorias);
   <div class="col-md-3">
     <label for="vFabricante" class="form-label">Fabricante</label>
     <select name="vFabricante" class="form-select" required>
-      <option selected value="0">Escolha...</option>
+      <option selected value="0" disabled>Escolha...</option>
       <option value="1">Fabricante 1</option>
       <option value="2">Fabricante 2</option>
     </select>
@@ -43,7 +43,7 @@ var_dump($categorias);
   <div class="col-md-3">
     <label for="vCategoria" class="form-label">Categoria</label>
     <select name="vCategoria" class="form-select" required>
-      <option selected value="0">Escolha...</option>
+      <option selected value="0" disabled>Escolha...</option>
       <?php
       foreach ($categorias as $c) {
         echo "<option value='$c->id_categoria'>$c->descricao</option>";

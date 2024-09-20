@@ -63,7 +63,7 @@ final class VeiculoDAO
         $sql = $this->con->query("
          SELECT veiculos.*, categoria.descricao AS descricao_categoria
         FROM veiculos
-        JOIN categoria ON veiculos.id_categoria = categoria.id_categoria
+        LEFT JOIN categoria ON veiculos.id_categoria = categoria.id_categoria
         ");
         $lista = array();
         while ($row = $sql->fetch(PDO::FETCH_OBJ)) {
@@ -86,8 +86,8 @@ final class VeiculoDAO
 
     public function getVeiculo(string $placa)
     {
-        $sql = $this->con->query("select * from veiculos where placa=:placa");
-        $sql->bindValue(":id", $placa);
+        $sql = $this->con->prepare("select * from veiculos where placa=:placa");
+        $sql->bindValue(":placa", $placa);
         $sql->execute();
         $row = $sql->fetch(PDO::FETCH_OBJ);
         $veiculo = new Veiculo();
