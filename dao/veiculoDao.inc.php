@@ -144,8 +144,9 @@ final class VeiculoDAO
         $sql->execute();
     }
 
-    public function pesquisaPlaca($placa){
-        $sql=$this->con->prepare("select * from veiculos where placa = :placa");
+    public function pesquisaPlaca($placa)
+    {
+        $sql = $this->con->prepare("select * from veiculos where placa = :placa");
         $sql->bindValue(":placa", $placa);
         $sql->execute();
 
@@ -166,7 +167,6 @@ final class VeiculoDAO
             $lista[] = $veiculo;
         }
         return $lista;
-
     }
 
     public function pesquisaNome($nome)
@@ -242,5 +242,31 @@ final class VeiculoDAO
             $lista[] = $veiculo;
         }
         return $lista;
+    }
+    public function verificarDisponibilidade(string $placa, string $dataInicio, string $dataFim): bool
+    {
+        // SQL para verificar se o veículo já está reservado nas datas fornecidas
+        $sql = $this->con->prepare("
+        SELECT COUNT(*) AS total 
+        FROM reservas 
+        WHERE placa = :placa 
+        AND (
+            (dataInicio <= :dataFim AND dataFim >= :dataInicio)
+        )
+    ");
+
+        // Bind dos parâmetros
+        $sql->bindValue(":placa", $placa);
+        $sql->bindValue(":dataInicio", $dataInicio);
+        $sql->bindValue(":dataFim", $dataFim);
+
+        // Executa a consulta
+        $sql->execute();
+
+        // Pega o resultado da consulta
+        $row = $sql->fetch(PDO::FETCH_OBJ);
+
+        // Se o total for maior que 0, o veículo já está reservado no período informado
+        return $row->total == 0;
     }
 }

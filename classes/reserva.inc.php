@@ -8,7 +8,7 @@ class Reserva
 
 
 
-    function __construct($locacao)
+    function setReserva($locacao)
     {
         $this->locacao = $locacao;
         $this->totalReserva = $this->locacao->__get('valor_total');
